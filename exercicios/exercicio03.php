@@ -51,7 +51,7 @@
 
         section.infantil {background: linear-gradient(70.12deg, #FFFFFF 13.28%, #FFFFFF 90%, #f409bd9f 90%, #f409bd9f 90%);}
         section.adulto {background: linear-gradient(70.12deg, #FFFFFF 13.28%, #FFFFFF 90%, #2d8bff9f 90%, #2d8bff9f 90%);}
-        section.idoso {background: linear-gradient(70.12deg, #FFFFFF 13.28%, #FFFFFF 90%, #aeff2d9f 90%, #aeff2d9f 90%);}
+        section.melhor-idade {background: linear-gradient(70.12deg, #FFFFFF 13.28%, #FFFFFF 90%, #aeff2d9f 90%, #aeff2d9f 90%);}
         
         section h2 {font-size: 3rem;}
 
@@ -74,24 +74,30 @@
     <?php
     $idade = 91;
     $categoria = "";
+    $classe = "";
     $valorIngresso = 0;
 
     if ($idade < 12) {
         $categoria = "Infantil";
         $valorIngresso = 25;
+        $classe = "infantil";
     } 
     elseif ($idade < 60 ) {
         $categoria = "Adulto";
         $valorIngresso = 40;
+        $classe = "adulto";
     }
     else {
-        $categoria = "Idoso";
+        $categoria = "Melhor Idade";
         $valorIngresso = 20;
+        $classe = "melhor-idade";
     }
+
+    $valorIngressoFormatado = number_format($valorIngresso, 2, ',', '.');
     ?>
 
     <main>
-        <section class="<?= strtolower($categoria) ?>">
+        <section class="<?= $classe ?>">
             <h2>Ingresso</h2>
             <ul>
                 <li>Idade: <b><?= $idade ?></b></li>
