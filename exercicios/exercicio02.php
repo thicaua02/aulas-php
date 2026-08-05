@@ -93,13 +93,5 @@
         </article>
     </main>
 
-    <script>
-        document.addEventListener('keydown', (evento) => {
-            if (evento.ctrlKey && evento.key.toLowerCase() === "s") {
-                evento.preventDefault();
-                location.reload();
-            } 
-        });
-    </script>
 </body>
 </html>

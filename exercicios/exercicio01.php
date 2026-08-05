@@ -70,14 +70,5 @@
         <p>Carga horário: <span><?php echo $cargaHoraria?></span> horas</p>
         <p>Limite de Faltas: <span><?php echo $limiteFaltas?></span> horas</p>
     </div>
-
-    <script>
-        document.addEventListener('keydown', (evento) => {
-            if (evento.ctrlKey && evento.key.toLowerCase() === "s") {
-                evento.preventDefault();
-                location.reload();
-            }
-        });
-    </script>
 </body>
 </html>
