@@ -102,7 +102,7 @@
             <ul>
                 <li>Idade: <b><?= $idade ?></b></li>
                 <li>Categoria: <b> <?= $categoria ?></b></li>
-                <li>Valor do ingresso: <b>R$ <?= $valorIngresso ?> </b></li>
+                <li>Valor do ingresso: <b>R$ <?= $valorIngressoFormatado ?> </b></li>
             </ul>
         </section>
     </main>
