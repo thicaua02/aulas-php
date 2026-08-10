@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <h1 class="exemplo">Trabalhando com PHP</h1>
+    <h1 class="text-warning text-uppercase text-center border border-4 border-warning">Trabalhando com PHP</h1>
     <hr>
 
     <?php
