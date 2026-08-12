@@ -70,6 +70,42 @@
         <p>Saudação 1: <?= exibirMensagem("boa tarde") ?></p>
 
         <hr>
+
+        <h2>Função com indução de tipos de dados</h2>
+        <p>Nesta abordagem, definimos tipos de dados para os
+        parâmetros e para o retorno da função.</p>
+
+        <?php
+            function verificarNegativo(int $valor):string {
+                if ($valor < 0) return "é negativo";
+                return "não é negativo";
+            }
+        ?>
+
+        <p>Número 10: <?= verificarNegativo(10) ?></p>
+        <p>Número -10: <?= verificarNegativo(-10) ?></p>
+
+
+        <hr>
+
+        <h2>Função anônima (ou lambda)</h2>
+        <?php
+            // SEMPRE DECLARE primeiro a função.
+            $multiplcar = function(float $valor1, float $valor2):float {
+                return $valor1 * $valor2;
+            };
+        ?>
+
+        <!-- Repare no uso do $ junto com o nome da fumção. -->
+        <p>Exemplo: <?= $multiplcar(10, 2); ?></p>
+
+        <hr>
+
+        <h2>Arrow Function</h2>
+        <?php
+            $substrair = fn(float $valor1, float $valor2):float => $valor1 - $valor2;
+        ?>
+        <p>Exemplo <?= $substrair(10, 1); ?></p>
     </div>
 </body>
 </html>
