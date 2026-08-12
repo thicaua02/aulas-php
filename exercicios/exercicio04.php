@@ -16,7 +16,7 @@
         ["id" => 5, "nome" => "SQL", "descricao" => "Manipulação de dados"]
     ];
     ?>
-
+    
     <div class="container">
         <table class="table table-striped">
             <thead class="table-dark">
@@ -27,12 +27,21 @@
                 </tr>
             </thead>
             <tbody>
+                
                 <?php foreach($linguagens as $linguagem):?>
-                    <tr>
-                        <td><?= $linguagem["id"]; ?></td>
-                        <td><?= $linguagem["nome"]; ?></td>
-                        <td><?= $linguagem["descricao"]; ?></td>
-                    </tr>
+                    <?php if($linguagem["id"] % 2 === 0): ?>>
+                        <tr class="table-primary">
+                            <td><?= $linguagem["id"]; ?></td>
+                            <td><?= $linguagem["nome"]; ?></td>
+                            <td><?= $linguagem["descricao"]; ?></td>
+                        </tr>
+                    <?php else: ?>
+                        <tr>
+                            <td><?= $linguagem["id"]; ?></td>
+                            <td><?= $linguagem["nome"]; ?></td>
+                            <td><?= $linguagem["descricao"]; ?></td>
+                        </tr>
+                    <?php endif ?>
                 <?php endforeach; ?>
             </tbody>
         </table>
