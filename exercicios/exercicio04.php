@@ -23,7 +23,7 @@
                 <tr>
                     <th class="text-uppercase">id</th>
                     <th class="text-uppercase">linguagem</th>
-                    <th class="text-uppercase">Descrição</th>
+                    <th class="text-uppercase">descrição</th>
                 </tr>
             </thead>
             <tbody>
