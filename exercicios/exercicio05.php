@@ -8,10 +8,10 @@
 </head>
 <body>
     <?php
-        function calcularMedia(...$notas) : float {
+        function calcularMedia(array $notas) : float {
             $total = 0;
             foreach ($notas as $nota) $total += $nota;
-            return $total / count($notas);
+            return number_format($total / count($notas), 2);
         }
 
         function verificarMedia(float $media) : string {
@@ -21,13 +21,45 @@
 
         $alunos = [
             "Alfredo" => [5, 5, 5],
-            "Beltrano" => [10, 5, 2],
+            "Beltrano" => [10, 10, 2],
             "Ciclano" => [2, 3, 5],
             "Deltrano" => [8, 7, 2],
             "Eutrano" => [0, 3, 2]
         ];
     ?>
 
-    
+    <div class="container">
+        <h1 class="text-uppercase text-center">Exericicio 05</h1>
+        <hr>
+        <div class="d-flex flex-row gap-3">
+            <?php foreach ($alunos as $aluno => $valores): ?>
+                <div class="card" style="width: 18rem;">
+                    <div class="card-header">
+                        <h2 class="text-uppercase"><?= $aluno ?></h2>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <?php for ($i=0; $i < count($valores); $i++): ?>
+                            <li class="list-group-item">Nota <?= $i+1 ?>: <?= $valores[$i]; ?></li>
+                        <?php endfor; ?>
+                        <li class="list-group-item">
+                            Resultado: 
+                            <?php 
+                                $media = calcularMedia($valores);
+                                echo "<b>$media</b>"; 
+                            ?>
+                        </li>
+
+                        <?php 
+                        $avaliacao = verificarMedia($media); 
+                        if ($avaliacao == "Aprovado"): ?>
+                            <li class="list-group-item bg-success text-white"><?= $avaliacao ?></li>
+                        <?php else: ?>
+                            <li class="list-group-item bg-danger text-white"><?= $avaliacao ?></li>
+                        <?php endif; ?>
+                    </ul>
+                </div>
+            <?php endforeach; ?>
+        </div>
+    </div>
 </body>
 </html>
