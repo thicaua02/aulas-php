@@ -42,6 +42,30 @@
         <p>Número com ajuste de casas decimais:
            R$ <?= number_format($numeroComMuitasCasasDecimais, 3); ?>
         </p>
+
+        <h2>Data e Hora</h2>
+        <h3>date(), date_default_timezone_set(), strtotime()</h3>
+        
+        <?php
+            date_default_timezone_set("America/Sao_Paulo");
+            $data = date("d/m/Y");
+            $hora = date("H:i:s");
+            $dataHora = date("d/m/Y H:i");
+        ?>
+
+        <p>Data: <?= $data ?></p>
+        <p>Hora: <?= $hora ?></p>
+        <p>Data e hora: <?= $dataHora ?></p>
+
+        <?php
+            $dataFormatoBD = "2020-09-11";
+            // Usamos o strtotime para converter primeiro a data em um timestamp (data em formato numérico). 
+            // Em seguinda, o date aplica o formato desejado.
+            $dataFormatada = date("d/m/s", strtotime($dataFormatoBD));
+        ?>
+
+        <p>Data (em formato de sistema/banco): <?= $dataFormatoBD ?></p>
+        <p>Data (convertida e formatada): <?= $dataFormatada ?></p>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
