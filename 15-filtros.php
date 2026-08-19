@@ -50,6 +50,48 @@
 
         <p>Contato <b>sem</b> sanitização: <?= $contato ?></p>
         <p>Contato <b>com</b> sanitização: <?= $contatoSanitizado ?></p>
+
+        <h3>FILTER_SANITIZE_FULL_SPECIAL_CHARS</h3>
+        <?php
+        // Simulando uma entrada de dados de código HTML
+        $nomeCompleto = "<img src='https://ogimg.infoglobo.com.br/rioshow/25088054-e75-c90/FT1086A/pacoca-caseira.jpg'>"; 
+        $nomeCompletoSanitizado = filter_var($nomeCompleto, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        ?>
+        <p>Nome informado: <?= $nomeCompletoSanitizado ?></p>
+        
+        <?php
+            $ataqueXSS = "<script>location = 'https://sp.senac.br'</script>";
+        ?>
+        <p>Teste <?=filter_var($ataqueXSS, FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?></p>
+
+        <h3>htmlspacialchars</h3>
+        <?php
+            $nomeCompletoCorrigido = htmlspecialchars($nomeCompleto);
+            $ataqueEvitado = htmlspecialchars($ataqueXSS);
+        ?>
+
+        <p>Nome completo corrigido: <?= $nomeCompletoCorrigido ?></p>
+        <p>Ataque evitado: <?= $ataqueEvitado ?></p>
+
+        <h3>FILTER_SANITIZE_NUMBER_INT</h3>
+        <?php
+            $idade = "Tenho 15 anos";
+            $idade = filter_var($idade, FILTER_SANITIZE_NUMBER_INT);
+        ?>
+        <p>Idade: <?= $idade ?></p>
+
+        <h3>FILTER_SANITIZE_NUMBER_FLOAT</h3>
+        <?php
+            $precoInicial = "R$ 1000";
+            $desconto = "R$ 300.30";
+            $precoInicial = filter_var($precoInicial, FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
+            $desconto = filter_var($desconto, FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
+            $precoFinal = $precoInicial - $desconto;
+        ?>
+
+        <p>Preço inicial: <?= $precoInicial ?></p>
+        <p>Desconto de: <?= $desconto ?></p>
+        <p>Preço final: <?= $precoFinal ?></p>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
